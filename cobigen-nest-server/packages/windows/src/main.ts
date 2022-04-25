@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Request, Response } from 'express';
 import properties from './config/properties';
-import * as bodyParser from 'body-parser';
+import * as bodyParser from 'express';
 
 // We need these variables for resetting the timeout
 let counter: number = 0;
