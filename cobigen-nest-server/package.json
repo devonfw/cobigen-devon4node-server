@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run cleanup:root && npm run cleanup:packages && tsc -p tsconfig.build.json && npm run copy:rename && npm run compress",
     "cleanup:root": "rimraf dist",
-    "cleanup:packages": "rimraf packages/*/dist/",
+    "cleanup:packages": "rimraf packages/*/dist/ && rimraf packages/*/nestserver-*",
     "copy:rename": "npm run copy && npm run rename",
     "copy": "copyfiles -f \"node_modules/@devonfw/ts-merger/dist/ts-merger.umd.js\" \"node_modules/@devonfw/ts-merger/build/\"",
     "rename": "node -e \"require('fs').rename('node_modules/@devonfw/ts-merger/build/ts-merger.umd.js', 'node_modules/@devonfw/ts-merger/build/index.js', function(err) { if (err) console.log(err); console.log('File successfully renamed!') })\"",
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "copyfiles": "^2.4.1",
-    "lerna": "^3.22.1",
-    "rimraf": "^2.6.2",
-    "terser": "^5.6.0"
+    "lerna": "^4.0.0",
+    "rimraf": "^3.0.2",
+    "terser": "^5.12.1"
   }
 }
