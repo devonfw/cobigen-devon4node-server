@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 
-describe('Testing input reader request to the server', () => {
+describe('Testing basic requests to the server', () => {
   let app;
 
   beforeEach(async () => {
@@ -14,11 +14,18 @@ describe('Testing input reader request to the server', () => {
     await app.init();
   });
 
-  it('processmanagement/tsplugin/getInputModel (POST) should return true', () => {
+  it('/ (GET)', () => {
     return request(app.getHttpServer())
-      .post('processmanagement/tsplugin/getInputModel')
-      .send({ content: 'class a {}' })
+      .get('/')
+      .expect(200)
+      .expect('Hello World!');
+  });
+
+  it('processmanagement/isValidInput (POST) should return true', () => {
+    return request(app.getHttpServer())
+      .post('/processmanagement/isValidInput')
+      .send({ path: 'bla.nest' })
       .expect(201)
-      .toBeNonEmptyString();
+      .expect('true');
   });
 });

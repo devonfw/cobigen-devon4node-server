@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Request, Response } from 'express';
 import properties from './config/properties';
-import * as bodyParser from 'body-parser';
+import * as express from 'express';
 
 // We need these variables for resetting the timeout
 let counter: number = 0;
@@ -46,8 +46,8 @@ async function bootstrap() {
   // Port is passed as argument when creating the process
   let port: string = process.argv[2];
   // We need to parse long JSON files on requests
-  app.use(bodyParser.json({ limit: '12mb' }));
-  app.use(bodyParser.urlencoded({ limit: '12mb', extended: true }));
+  app.use(express.json({ limit: '12mb' }));
+  app.use(express.urlencoded({ limit: '12mb', extended: true }));
 
   if (port === undefined) {
     // Default port when no parameter was passed
