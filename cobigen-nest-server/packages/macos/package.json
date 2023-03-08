@@ -25,7 +25,7 @@
   "dependencies": {
     "@devonfw/ts-merger": "^2.2.10",
     "@nestjs/common": "^8.4.4",
-    "@nestjs/core": "^8.4.4",
+    "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^8.4.4",
     "js-beautify": "^1.14.3",
     "pkg": "^5.6.0",
